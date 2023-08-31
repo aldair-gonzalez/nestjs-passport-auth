@@ -46,6 +46,3 @@ Uso
 📝 Licencia
 
 Este proyecto está bajo la Licencia MIT.
-📞 Contacto
-
-Para más información, puedes visitar la página web de NestJS o encontrarnos en Twitter.
