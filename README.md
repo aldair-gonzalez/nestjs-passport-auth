@@ -25,8 +25,9 @@ Un proyecto de ejemplo que demuestra cómo implementar la autenticación utiliza
 2. Ejecuta la aplicación:
    ```bash
    npm run start:dev
+   ```
 
-    Accede a la API en http://localhost:8080.
+3. Accede a la API en http://localhost:8080.
 
 Uso
 
@@ -39,6 +40,7 @@ Uso
     NestJS
     Passport
     JWT
+    MySql
 
 🤝 Contribuciones
 
