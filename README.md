@@ -1,55 +1,84 @@
-# Autenticación con Passport en NestJS
+# Aplicación de inicio de sesión y registro de usuarios simple
 
 <p align="center">
   <img src="https://nestjs.com/img/logo-small.svg" width="150" alt="Nest Logo" />
 </p>
 
-Un proyecto de ejemplo que demuestra cómo implementar la autenticación utilizando Passport en una aplicación NestJS.
+Esta aplicación utiliza JWT para la autenticación.
 
-## Características
+## Descripción
 
-- Autenticación local utilizando Passport
-- Autenticación con JWT (JSON Web Tokens)
-- Registro y inicio de sesión de usuarios
-- Rutas protegidas utilizando guards
+Esta aplicación permite a los usuarios iniciar sesión y registrarse en una aplicación web. Para iniciar sesión, el usuario debe proporcionar su dirección de correo electrónico y contraseña. Para registrarse, el usuario debe proporcionar su nombre, apellido, dirección de correo electrónico y contraseña.
 
-## Instalación
+## Cómo funciona
 
-1. Clona este repositorio.
+La aplicación utiliza el protocolo JWT para la autenticación. JWT es un estándar abierto para el intercambio de información segura entre dos partes. Cuando un usuario inicia sesión, la aplicación genera un token JWT. Este token contiene la información de autenticación del usuario. El token se almacena en el navegador del usuario y se utiliza para autenticar las solicitudes posteriores.
 
-2. Instala las dependencias:
-   ```bash
-   npm install
-   ```
+## Código
 
-## Empezando
+El código de la aplicación está escrito en TypeScript. La aplicación utiliza el framework NestJS para el desarrollo de aplicaciones web.
 
-1. Crea un archivo .env basado en el archivo .env.example proporcionado y configura los ajustes de tu base de datos.
+## Instalación y ejecución
 
-2. Ejecuta la aplicación en modo de desarrollo:
-   ```bash
-   npm run start:dev
-   ```
+Para instalar la aplicación, usa el siguiente comando:
 
-3. Accede a la API en http://localhost:8080/api/.
+  ```shell
+  npm install
+  ```
+
+Para ejecutar la aplicación, usa el siguiente comando:
+
+  ```
+  npm run start
+  ```
 
 ## Uso
 
-- Registrar un nuevo usuario: POST /auth/register
-- Iniciar sesión con correo electrónico y contraseña: POST /auth/login
-- Acceder a rutas protegidas: GET /protected (requiere token JWT)
+Para iniciar sesión en la aplicación, envía una solicitud POST a la ruta /auth/login con los siguientes datos:
 
-## Tecnologías
+```
+  {
+    email: "your@email.com",
+    password: "your_password"
+  }
+```
 
-- [NestJS](https://nestjs.com)
-- [Passport](http://www.passportjs.org)
-- [JWT (JSON Web Tokens)](https://jwt.io)
-- [MySQL](https://www.mysql.com)
+Si la autenticación es exitosa, se devolverá un token JWT. Puedes usar este token para autenticar las solicitudes posteriores.
 
-## Contribuciones
+Para registrarse en la aplicación, envía una solicitud POST a la ruta /auth/register con los siguientes datos:
 
-¡Las contribuciones son bienvenidas! Si encuentras algún problema o tienes sugerencias, siéntete libre de crear un issue o pull request.
+  ```
+    {
+      name: "Your Name",
+      last_name: "Your Last Name",
+      email: "your@email.com",
+      password: "your_password"
+    }
+  ```
+
+Si el registro es exitoso, se devolverá un token JWT. Puedes usar este token para autenticar las solicitudes posteriores.
+
+## Ejemplos
+
+Iniciar sesión
+```
+curl -X POST 
+
+-H "Content-Type: application/json" 
+
+-d '{"email": "your@email.com", "password": "your_password"}' 
+
+http://localhost:8080/auth/login
+```
+
+Obtener el perfil del usuario
+
+```
+curl -H "Authorization: Bearer <token>" 
+
+http://localhost:8080/auth/profile
+```
 
 ## Licencia
 
-Este proyecto está bajo la [Licencia MIT](LICENSE).
+Este proyecto está disponible bajo la [Licencia MIT](LICENSE).
